@@ -12,11 +12,8 @@ uid_list = getUIDList(Query)
 #print("Print ID_List:", uid_list)
 
 article_consumed = getArticleInformation(uid_list) 
-print(article_consumed)
 # article_consumed has the form {1: {'uid': '', 'title': '', 'authors': '', 'doi': ''}, 2: {'uid': '', 'title': '', 'authors': '', 'doi': ''},
-# 
 
 
-
-# for article in article_consumed:
-#     print(article_consumed[article]['doi'])
+for article in article_consumed:
+    print(article_consumed[article]['doi'])

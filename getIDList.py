@@ -7,7 +7,7 @@ def getUIDList(query):
     XPath = "./IdList/Id"
     db = "pubmed"
     query = "eyes"
-    retmax = "10" #MAX 400
+    retmax = "500" #MAX 400
     url = f'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db={db}&term={query}&retmax={retmax}'
 
     r = requests.get(url)
