@@ -5,14 +5,14 @@ import requests, math
 #print(ET.tostring(xml, encoding='utf8').decode('utf8'))
 
 def getArticleInformation(uid_list):
-    THRESHOLD = 100
+    THRESHOLD = 250
 
     if len(uid_list) > THRESHOLD:
 
         it_amount = math.ceil(len(uid_list)/THRESHOLD) - 1
 
         print("Amount of Iterations is: ", it_amount + 1)
-        article_info = _getArticleInfo(uid_list[0:THRESHOLD+1])
+        article_info = _getArticleInfo(uid_list[0:THRESHOLD])
 
         it_work = 0
 
@@ -20,6 +20,8 @@ def getArticleInformation(uid_list):
 
             it_amount -= 1
             it_work += 1
+            #print("IT_WORK / IT_AMOUNT: ", it_work, " / ", it_amount)
+
             offset = THRESHOLD * it_work
 
             if it_amount == 0:
@@ -69,8 +71,8 @@ def _getArticleInfo(uid_list):
         for Def in article.findall('.//ArticleId'):
             IdTypeN = Def.find('.//IdTypeN').text
             if IdTypeN == '3':
-                doi = Def.find('.//Value').text
                 noDOI = False
+                doi = Def.find('.//Value').text
 
         authors = article.findall('./Authors/Author')
         author_list = []
@@ -95,6 +97,7 @@ def _getArticleInfo(uid_list):
                 "authors": author_list,
                 "doi": doi,
             } 
+
     return article_info
 
 ## RESULT SHOULD BE {articles: [{"uid": "12312", "title": "Allosteric", "authors": "M. Weisskopf", "doi": "doi.org/ji"}, 
