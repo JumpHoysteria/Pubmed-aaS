@@ -5,13 +5,16 @@ import requests, math
 #print(ET.tostring(xml, encoding='utf8').decode('utf8'))
 
 def getArticleInformation(uid_list):
-    THRESHOLD = 250
+    THRESHOLD = 250 #DON'T CHANGE
 
     if len(uid_list) > THRESHOLD:
 
         it_amount = math.ceil(len(uid_list)/THRESHOLD) - 1
 
         print("Amount of Iterations is: ", it_amount + 1)
+
+        print("Current Iteration: " + str(1))
+
         article_info = _getArticleInfo(uid_list[0:THRESHOLD])
 
         it_work = 0
@@ -20,7 +23,8 @@ def getArticleInformation(uid_list):
 
             it_amount -= 1
             it_work += 1
-            #print("IT_WORK / IT_AMOUNT: ", it_work, " / ", it_amount)
+            
+            print("Current Iteration: " + str(it_work + 1))
 
             offset = THRESHOLD * it_work
 
@@ -82,6 +86,10 @@ def _getArticleInfo(uid_list):
 
         title = article.find('./Title').text
         
+        if not title:
+            print("This guys doesn't have a title! " + str(uid))
+            continue
+
         if noDOI:
             article_info[index] = {
                 "uid": uid,
