@@ -1,13 +1,24 @@
-import json, markdown, datetime
-import mdutils
-import xml.etree.ElementTree as ET
+import markdown, datetime, mdutils  
 from getIDList import getUIDList 
 from getArticleInformation import getArticleInformation
-import pypandoc
 from xhtml2pdf import pisa
 
 ##
 # If there is no DOI associated, then the entry in the article-dictionary will be NONE
+# Beware: Path to TXT-Query is hard-coded and has to be adapted. Relative paths work.
+#
+#
+#
+#
+##
+
+PATH_TO_AuthorQuery = 'C:/Users/Alex/Desktop/PaperScreening/PaperScreening_Date_Author_Exclusion.txt'
+PATH_TO_BigQuery = 'C:/Users/Alex/Desktop/PaperScreening/Query.txt'
+NAME_OF_Output = (file_name := 'Potential Papers of Interest') 
+
+
+# file_name = NAME_OF_Output 
+
 
 def convert_html_to_pdf(source_html, output_filename, style):
     # From xhtml2pdf-Docs
@@ -28,24 +39,39 @@ def convert_html_to_pdf(source_html, output_filename, style):
     # return False on success and True on errors
     return pisa_status.err
 
+MODE = "COMBINED" ## Either COMBINED or AUTHORS
 
 
-with open('C:/Users/Alex/Desktop/PaperScreening/PaperScreening_Date_Author_Exclusion.txt', 'r') as f:
-    query = f.read()
-    query = str(query)
-    n = query.find('END_COMMENT') + len('END_COMMENT')
-    #print(n)
+day = datetime.datetime.now()
+day = str(day.date())
 
-query = str(query[n:len(query)]).strip()
+
+if MODE == "COMBINED":
+
+    with open(PATH_TO_BigQuery, 'r') as f:
+        query = f.read()
+        query = str(query)
+        n = query.find('END_COMMENT') + len('END_COMMENT')
+        #print(n)
+
+    query = str(query[n:len(query)]).strip()
+
+elif MODE == "AUTHORS":
+
+    with open(PATH_TO_AuthorQuery, 'r') as f:
+        query = f.read()
+        query = str(query)
+        n = query.find('END_COMMENT') + len('END_COMMENT')
+        #print(n)
+
+    query = str(query[n:len(query)]).strip()
+else:
+    raise Exception('WRONG MODE SET')
 
 uid_list, content  = getUIDList(query)
 
 article_consumed = getArticleInformation(uid_list) 
 
-day = datetime.datetime.now()
-day = str(day.date())
-
-file_name = 'Paper_of_Interest_AUTHORS_WholeYear_' + day
 
 mdFile = mdutils.MdUtils(file_name= file_name,title=file_name)
 
