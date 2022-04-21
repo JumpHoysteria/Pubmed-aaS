@@ -1,19 +1,22 @@
-import markdown, datetime, mdutils  
+import markdown, datetime, mdutils, os
 from getIDList import getUIDList 
 from getArticleInformation import getArticleInformation
 from xhtml2pdf import pisa
 
+dirname = os.path.dirname(__file__)
+
 ##
 # If there is no DOI associated, then the entry in the article-dictionary will be NONE
-# Beware: Path to TXT-Query is hard-coded and has to be adapted. Relative paths work.
+# 
 #
 #
 #
 #
 ##
 
-PATH_TO_AuthorQuery = 'C:/Users/Alex/Desktop/PaperScreening/PaperScreening_Date_Author_Exclusion.txt'
-PATH_TO_BigQuery = 'C:/Users/Alex/Desktop/PaperScreening/Query.txt'
+PATH_TO_BigQuery = os.path.join(dirname, 'Queries/Query.txt')
+PATH_TO_AuthorQuery = os.path.join(dirname, 'Queries/PaperScreening_Date_Author_Exclusion.txt')
+
 NAME_OF_Output = (file_name := 'Potential Papers of Interest') 
 
 
@@ -62,7 +65,6 @@ elif MODE == "AUTHORS":
         query = f.read()
         query = str(query)
         n = query.find('END_COMMENT') + len('END_COMMENT')
-        #print(n)
 
     query = str(query[n:len(query)]).strip()
 else:

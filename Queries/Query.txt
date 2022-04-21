@@ -1,0 +1,105 @@
+START_COMMENT:
+EXPLANATION: 
+	This PUBMED-query screens for generally interesting papers for our group, based on keywords, author lists, exclusion criteria and date of publication.
+	The query can be copied into PubMed (https://pubmed.ncbi.nlm.nih.gov) as is, but without the /** ... **/ part.
+
+DOCUMENTATION: 
+	1. NOT-Block: 
+		Has to be put to the end and follows the following syntax
+		((((Query[Dates, Keywords, Authors]) NOT (Yeast)) NOT (Cancer)) NOT (Invertebrates)) NOT (Insects)) NOT (Plants)
+	2. DATE:
+		The DATE-Format in the Query below is YYYY/MM/DD. So "2021/03/24" is March 24th 2021.
+
+
+VERSION HISTORY:
+v01	04.02.21
+v02 24.04.21 Expanded NOT-Block, Synched with Date_Author_Exclusion-Query
+
+
+END_COMMENT
+
+
+((((((((
+("2022/04/10"[Date - Publication] : "2022/04/17"[Date - Publication])
+AND 
+(
+(((((((((mouse) OR (human)) OR (amphibians)) OR (zebrafish)) OR (ES cells)) OR (iPSC)) OR (rodent)) OR (chicken)) OR (avian)) OR (mammals)
+)
+AND
+(
+((((((((((((((((("Developmental Haematopoiesis" Mouse OR
+"Developmental Haematopoiesis") OR
+"Developmental Haematopoiesis") OR
+"Umbilical cord blood") OR
+((("HSC" OR "Haematopoietic Stem Cell") OR "HSPC") OR "hematopoietic stem cell" OR "Haematopoietic Stem and Progenitor Cell")) OR
+("Aorta-Gonad-Mesonephros" OR "AGM")) OR
+(("Hematopoiesis" OR"Haematopoiesis") AND (((fetal liver OR FOI) OR Notch) OR Sox17))) OR
+Dorsal Aorta) OR
+(("Endothelial to Haematopoietic Transition" OR "Endothelial-to-haematopoietic transition") OR "EHT")) OR
+RUNX1) OR
+FLK1) OR
+KDR) OR
+(("Intra-aortic cluster" OR "IAHC") OR "intra-aortic clusters")) OR
+CD43) OR
+CD41) OR
+Vasculogenesis) OR
+Angiopoietin) OR
+Gfi1
+)
+OR
+(
+((((((((((((((((((((((((((((((((((((((((((((((((((Alexander Medvinsky[Author] OR 
+Marella de Bruijn[Author]) OR 
+Elaine Dzierzak[Author]) OR 
+Thierry Jaffredo[Author]) OR
+Catherine Robin[Author]) OR
+Anna Bigas[Author]) OR
+Joanna Tober[Author]) OR
+Nancy Speck[Author]) OR
+Hanna Mikkola[Author]) OR
+Ana Cumano[Author]) OR
+Igor M Samokhvalov[Author]) OR
+Constanze Bonifer[Author]) OR
+John E Dick[Author]) OR
+Manuela Tavian[Author]) OR
+Livesey FJ[Author]) OR
+Guy Sauvageau[Author]) OR
+Françoise Dieterlen-Lièvre[Author]) OR
+Isabelle Godin[Author]) OR
+David Scadden[Author]) OR
+Stuart Orkin[Author]) OR
+Hiromitsu Nakauchi[Author]) OR
+Leonard Zon[Author]) OR
+George Daley[Author]) OR
+Sean J Morrison[Author]) OR
+Irving L Weissman[Author]) OR
+Hiromitsu Nakauchi[Author]) OR
+Katrin Ottersbach[Author]) OR
+Aldo Ciau-Uitz[Author]) OR
+Connie J Eaves[Author]) OR
+Martin Gering[Author]) OR
+Cristina Lo Celso[Author]) OR
+Charles Durand[Author]) OR
+Sten Eirik W. Jacobsen[Author]) OR
+Trista North[Author]) OR
+Philippe Herbomel[Author]) OR
+Karima Kissa[Author]) OR
+Roger Patient[Author]) OR
+David Traver[Author]) OR
+Igor Slukvin[Author]) OR
+Andrew Elefanty[Author]) OR
+Timm Schroeder[Author]) OR
+Christophe Lancrin[Author]) OR
+Georges Lacaud[Author]) OR
+Valerie Kouskoff[Author]) OR
+Michael Kyba[Author]) OR
+Berthold Göttgens[Author]) OR
+Thorsten M. Schlaeger[Author]) OR
+Michael J. Chen[Author]) OR
+Paul Frenette[Author]) OR
+Keisuke Ito[Author]) OR
+Shin-Ichi Nishikawa[Author]) OR
+Shinya Yamanaka[Author])
+)
+)
+NOT (Yeast)) NOT (cancer)) NOT (Insecticide)) NOT (Invertebrates)) NOT (Plants)) NOT (Malaria[Title])) NOT Diabetes[Title]) NOT Alzheimer[Title]

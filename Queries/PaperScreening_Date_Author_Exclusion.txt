@@ -1,0 +1,82 @@
+START_COMMENT:
+EXPLANATION: 
+	This query is only focused on Authors of interest!
+	This query can be input as query to script as is.
+
+DOCUMENTATION: 
+	1. NOT-Block: 
+		Has to be put to the end and follows the following syntax
+		((((Query[Dates, Keywords, Authors]) NOT (Yeast)) NOT (Cancer)) NOT (Invertebrates)) NOT (Insects)) NOT (Plants)
+	2. DATE:
+		The DATE-Format in the Query below is YYYY/MM/DD. So "2021/03/24" is March 24th 2021.
+
+VERSION HISTORY:
+v01	22.03.21
+v02	22.03.21 Addition of Nackauchi Hiromitsu[Author]
+
+
+END_COMMENT
+
+
+(((((((
+(
+("2021/08/01"[Date - Publication] : "2022/01/16"[Date - Publication])
+AND 
+(
+(((((((((mouse) OR (human)) OR (amphibians)) OR (zebrafish)) OR (ES cells)) OR (iPSC)) OR (rodent)) OR (chicken)) OR (avian)) OR (mammals)
+)
+AND
+(
+(((((((((((((((((((((((((((((((((((((((((((((((((Alexander Medvinsky[Author] OR 
+Marella de Bruijn[Author]) OR 
+Elaine Dzierzak[Author]) OR 
+Thierry Jaffredo[Author]) OR
+Catherine Robin[Author]) OR
+Anna Bigas[Author]) OR
+Joanna Tober[Author]) OR
+Nancy Speck[Author]) OR
+Hanna Mikkola[Author]) OR
+Ana Cumano[Author]) OR
+Igor M Samokhvalov[Author]) OR
+Constanze Bonifer[Author]) OR
+John E Dick[Author]) OR
+Manuela Tavian[Author]) OR
+Livesey FJ[Author]) OR
+Guy Sauvageau[Author]) OR
+Françoise Dieterlen-Lièvre[Author]) OR
+Isabelle Godin[Author]) OR
+David Scadden[Author]) OR
+Stuart Orkin[Author]) OR
+Leonard Zon[Author]) OR
+George Daley[Author]) OR
+Sean J Morrison[Author]) OR
+Irving L Weissman[Author]) OR
+Hiromitsu Nakauchi[Author]) OR
+Katrin Ottersbach[Author]) OR
+Aldo Ciau-Uitz[Author]) OR
+Connie J Eaves[Author]) OR
+Martin Gering[Author]) OR
+Cristina Lo Celso[Author]) OR
+Charles Durand[Author]) OR
+Sten Eirik W. Jacobsen[Author]) OR
+Trista North[Author]) OR
+Philippe Herbomel[Author]) OR
+Karima Kissa[Author]) OR
+Roger Patient[Author]) OR
+David Traver[Author]) OR
+Igor Slukvin[Author]) OR
+Andrew Elefanty[Author]) OR
+Timm Schroeder[Author]) OR
+Christophe Lancrin[Author]) OR
+Georges Lacaud[Author]) OR
+Valerie Kouskoff[Author]) OR
+Michael Kyba[Author]) OR
+Berthold Göttgens[Author]) OR
+Thorsten M. Schlaeger[Author]) OR
+Michael J. Chen[Author]) OR
+Paul Frenette[Author]) OR
+Keisuke Ito[Author]) OR
+Shin-Ichi Nishikawa[Author]) OR
+Shinya Yamanaka[Author])
+)
+NOT (Yeast)) NOT (cancer)) NOT (Insecticide)) NOT (Invertebrates)) NOT (Plants)) NOT (Malaria[Title])) NOT Diabetes[Title]) NOT Alzheimer[Title]

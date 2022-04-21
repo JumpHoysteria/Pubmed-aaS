@@ -1,6 +1,10 @@
 # Static Files and non-helping
 *.pdf
+!SchematicQuery.pdf
 *.docx
+*.txt
+!Query.txt
+!PaperScreening_Date_Author_Exclusion.txt
 *.html
 *.md
 experiment.py
