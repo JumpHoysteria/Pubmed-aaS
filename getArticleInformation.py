@@ -61,22 +61,31 @@ def _getArticleInfo(uid_list):
 
     xml = ET.fromstring(r.content)
 
-    article_info = {}
-    
+    article_info = {}    
     #for article in xml.findall(f".//*[@uid=\'{uid}\']"):
     for uid in uid_list:
         index = uid_list.index(uid) + 1
         article = xml.find(f".//*[@uid=\'{uid}\']")
+        #breakpoint()
             # This returns DocumentSummary for Article
             # print(ET.tostring(article, encoding='utf8').decode('utf8'))
             
-        noDOI = True
+        journal = "No Journal"
+        date = "No Date"
+        title = "No Title"
+        doi = "None"
 
         for Def in article.findall('.//ArticleId'):
             IdTypeN = Def.find('.//IdTypeN').text
             if IdTypeN == '3':
-                noDOI = False
                 doi = Def.find('.//Value').text
+
+        for source in article.findall('.//Source'):
+            journal = source.text
+
+        for source in article.findall('.//PubDate'):
+            date = source.text
+            
 
         authors = article.findall('./Authors/Author')
         author_list = []
@@ -87,24 +96,18 @@ def _getArticleInfo(uid_list):
         title = article.find('./Title').text
         
         if not title:
-            print("This guys doesn't have a title! " + str(uid))
+            print("This guy doesn't have a title! " + str(uid))
             continue
 
-        if noDOI:
-            article_info[index] = {
-                "uid": uid,
-                "title": title,
-                "authors": author_list,
-                "doi": "NONE",
-            }
+        article_info[index] = {
+            "uid": uid,
+            "title": title,
+            "journal": journal,
+            "date": date,
+            "authors": author_list,
+            "doi": doi,
+        }
 
-        else: 
-            article_info[index] = {
-                "uid": uid,
-                "title": title,
-                "authors": author_list,
-                "doi": doi,
-            } 
 
     return article_info
 

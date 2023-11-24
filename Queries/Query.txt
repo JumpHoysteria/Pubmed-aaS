@@ -20,7 +20,7 @@ END_COMMENT
 
 
 ((((((((
-("2022/04/10"[Date - Publication] : "2022/04/17"[Date - Publication])
+("2022/07/12"[Date - Publication] : "2022/08/21"[Date - Publication])
 AND 
 (
 (((((((((mouse) OR (human)) OR (amphibians)) OR (zebrafish)) OR (ES cells)) OR (iPSC)) OR (rodent)) OR (chicken)) OR (avian)) OR (mammals)

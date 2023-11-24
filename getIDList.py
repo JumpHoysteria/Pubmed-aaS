@@ -12,7 +12,7 @@ def getUIDList(query):
 
     r = requests.get(url)
     #print("Status code: " + str(r.status_code))
-
+    #breakpoint()
     tree = ET.fromstring(r.content)
     tree = tree.findall(XPath)
     for child in tree:
