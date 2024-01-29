@@ -20,4 +20,4 @@ v03 	08.03.23 Personalised for each person, included Journal in Bulk
 
 END_COMMENT
 
-(("Nature communications"[Journal]) AND ("START"[Date - Publication]: "END"[Date - Publication])) NOT (News[Publication Type])
+(("Nature medicine"[Journal] OR "Nature cell biology"[Journal]) AND ("START"[Date - Publication]: "END"[Date - Publication])) NOT (News[Publication Type])

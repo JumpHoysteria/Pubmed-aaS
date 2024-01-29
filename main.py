@@ -17,7 +17,7 @@ end = "2024/12/17"
 #
 ##
 
-for person in ['230308_Alex.txt','230308_Alexander.txt','230308_Antonis.txt','230308_Dipta.txt','230308_Marlene.txt','230308_Marta.txt','230308_Pallavi.txt','230308_Sabrina.txt','230308_Yan.txt']:
+for person in ['230308_Alex.txt','230308_Alexander.txt','230308_Antonis.txt','230308_Dipta.txt','230308_Louise.txt','230308_Marlene.txt','230308_Marta.txt','230308_Pallavi.txt','230308_Sabrina.txt','230308_Yan.txt']:
 #for person in ['230308_Alexander.txt']:
 
     PATH_TO_JournalQuery = os.path.join(dirname, 'Queries/' + person)
