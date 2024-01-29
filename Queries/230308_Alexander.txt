@@ -1,0 +1,27 @@
+START_COMMENT:
+EXPLANATION: 
+	This PUBMED-query screens for generally interesting papers for our group, based on keywords, author lists, exclusion criteria and date of publication.
+	The query can be copied into PubMed (https://pubmed.ncbi.nlm.nih.gov) as is, but without the /** ... **/ part.
+
+DOCUMENTATION: 
+	1. NOT-Block: 
+		Has to be put to the end and follows the following syntax
+		((((Query[Dates, Keywords, Authors]) NOT (Yeast)) NOT (Cancer)) NOT (Invertebrates)) NOT (Insects)) NOT (Plants)
+	2. DATE:
+		The DATE-Format in the Query below is YYYY/MM/DD. So "2021/03/24" is March 24th 2021.
+
+NOTES
+Alexander explicitly wanted me to keep in the news articles.
+
+VERSION HISTORY:
+v01	04.02.21
+v02 	24.04.21 Expanded NOT-Block, Synched with Date_Author_Exclusion-Query
+v03 	08.03.23 Personalised for each person, included Journal in Bulk
+
+Alexander's original query, tested to work!
+
+(("Nature communications"[Journal]) OR ("Cell"[Journal])) AND (("2023/01/01"[Date - Publication] : "3000"[Date - Publication]))
+
+END_COMMENT
+
+((("Cell"[Journal]) OR ("Nature"[Journal])) OR ("Cell stem cell"[Journal])) AND (("START"[Date - Publication] : "END"[Date - Publication]))

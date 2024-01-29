@@ -6,8 +6,8 @@ from string import Template
 
 dirname = os.path.dirname(__file__)
 
-start = "2023/11/06" ## YYYY/MM/DD
-end = "2023/11/19"
+start = "2023/12/04" ## YYYY/MM/DD
+end = "2024/12/17"
 
 ##
 # If there is no DOI associated, then the entry in the article-dictionary will be NONE
@@ -17,8 +17,8 @@ end = "2023/11/19"
 #
 ##
 
-for person in ['230308_Alex.txt','230308_Alexander.txt','230308_Anahi.txt','230308_Dipta.txt','230308_Marta.txt','230308_Sabrina.txt','230308_Yan.txt']:
-#for person in ['230308_Alex.txt']:
+for person in ['230308_Alex.txt','230308_Alexander.txt','230308_Antonis.txt','230308_Dipta.txt','230308_Marlene.txt','230308_Marta.txt','230308_Pallavi.txt','230308_Sabrina.txt','230308_Yan.txt']:
+#for person in ['230308_Alexander.txt']:
 
     PATH_TO_JournalQuery = os.path.join(dirname, 'Queries/' + person)
     #PATH_TO_JournalQuery = os.path.join(dirname, 'Queries/' + '230308_Marta.txt')
@@ -92,16 +92,29 @@ for person in ['230308_Alex.txt','230308_Alexander.txt','230308_Anahi.txt','2303
     doc_title = doc_title[1]
     doc_title = doc_title[:-4]
     mdFile = mdutils.MdUtils(file_name= file_name,title=doc_title)
-
+    
+    TotAmoFrJo = str(article_consumed).count('journal\': \'Nat Commun')
+    NatComm_counter = 1
+    
     for article in article_consumed:
-
+            
         art = article_consumed[article]
-        
         doi = art['doi'] # title, authors, date, journal, link (doi)
         journal = art['journal']
         date = art['date']
         author_string = ""
         title = art['title']
+        #breakpoint()
+        
+        if person == '230308_Marta.txt' and NatComm_counter > TotAmoFrJo//2 and journal =='Nat Commun':
+            NatComm_counter += 1
+            continue
+        elif person == '230308_Marlene.txt' and NatComm_counter <= TotAmoFrJo//2 and journal =='Nat Commun':
+            NatComm_counter += 1
+            continue
+        elif journal == 'Nat Commun':
+            NatComm_counter += 1
+         
 
         for author in art['authors']:
             author_string = author_string + str(author) + ", "

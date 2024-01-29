@@ -92,8 +92,13 @@ def _getArticleInfo(uid_list):
         for author in authors:
             name = author.find('./Name').text
             author_list.append(name)
-
-        title = article.find('./Title').text
+            
+        title = "NO TITLE"
+        try:
+            title = article.find('./Title').text  
+        except AttributeError as e:
+            print(e, uid, article.text)
+            continue
         
         if not title:
             print("This guy doesn't have a title! " + str(uid))
