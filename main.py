@@ -6,7 +6,7 @@ from string import Template
 
 dirname = os.path.dirname(__file__)
 
-start = "2023/12/04" ## YYYY/MM/DD
+start = "2023/09/04" ## YYYY/MM/DD
 end = "2024/12/17"
 
 ##
@@ -17,8 +17,8 @@ end = "2024/12/17"
 #
 ##
 
-for person in ['230308_Alex.txt','230308_Alexander.txt','230308_Antonis.txt','230308_Dipta.txt','230308_Louise.txt','230308_Marlene.txt','230308_Marta.txt','230308_Pallavi.txt','230308_Sabrina.txt','230308_Yan.txt']:
-#for person in ['230308_Alexander.txt']:
+#for person in ['230308_Alex.txt','230308_Alexander.txt','230308_Antonis.txt','230308_Dipta.txt','230308_Louise.txt','230308_Marlene.txt','230308_Marta.txt','230308_Pallavi.txt','230308_Sabrina.txt','230308_Yan.txt']:
+for person in ['230308_Louise.txt']:
 
     PATH_TO_JournalQuery = os.path.join(dirname, 'Queries/' + person)
     #PATH_TO_JournalQuery = os.path.join(dirname, 'Queries/' + '230308_Marta.txt')
